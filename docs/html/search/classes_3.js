@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['output_22',['Output',['../classOutput.html',1,'']]]
+  ['minimumspanningtree_31',['MinimumSpanningTree',['../classMinimumSpanningTree.html',1,'']]]
 ];

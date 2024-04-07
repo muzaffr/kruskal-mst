@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['insert_28',['insert',['../classPriorityQueue.html#ae16f4a4653423c44004bd39956786f9a',1,'PriorityQueue']]]
+  ['kruskal_38',['kruskal',['../classMinimumSpanningTree.html#a208f4b6d5120f39811c1c0ee4390f6d7',1,'MinimumSpanningTree']]]
 ];

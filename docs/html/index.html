@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Heap: Main Page</title>
+<title>Kruskal&#39;s MST Algorithm: Main Page</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,9 +21,9 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Heap
+   <div id="projectname">Kruskal&#39;s MST Algorithm
    </div>
-   <div id="projectbrief">CS5800 Assignment 1</div>
+   <div id="projectbrief">CS5800 Assignment 2</div>
   </td>
  </tr>
  </tbody>
@@ -63,112 +63,56 @@ $(function() {
 
 <div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title">Heap Documentation</div>  </div>
+<div class="title">Kruskal's MST Algorithm Documentation</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="md_README"></a> This project was implemented as part of Assignment 1 of Advanced Data Structures and Algorithms (CS5800), 2024 at Indian Institute of Technology, Madras.</p>
+<div class="textblock"><p><a class="anchor" id="md_README"></a> This project was implemented as part of Assignment 2 of Advanced Data Structures and Algorithms (CS5800), 2024 at Indian Institute of Technology, Madras.</p>
 <h1><a class="anchor" id="autotoc_md0"></a>
 Requirements</h1>
-<p>The C++ source requires g++, clang or an equivalent compiler and is platform independent. Other (Python) tools and scripts are potentially platform dependent. This project has been developed and tested on GNU Linux (5.15.133.1-microsoft-standard-WSL2) and the rest of this document assumes it is being run on a modern Linux distribution.</p>
-<p><code>cmake</code> is required to run <code>make</code> and the Python requirements have been listed in <code>requirements.txt</code>. <code>valgrind</code> is required to run memory benchmarking.</p>
+<p>The C++ source requires g++, clang or an equivalent compiler and is platform independent. This project has been developed and tested on GNU Linux (5.15.133.1-microsoft-standard-WSL2) and the rest of this document assumes it is being run on a modern Linux distribution.</p>
+<p><code>cmake</code> is required to run <code>make</code>.</p>
 <h1><a class="anchor" id="autotoc_md1"></a>
 Quick Start</h1>
-<p>Run <code>make orig</code> to generate the binaries in <code>./bin/</code>, specifically <code>pq_orig</code> and <code>sort_orig</code>.</p>
-<p><code>pq_orig</code> demonstrates a usage of the class <a class="el" href="classPriorityQueue.html">PriorityQueue</a> and its functionalities such as <a class="el" href="classPriorityQueue.html#ae16f4a4653423c44004bd39956786f9a">PriorityQueue::insert()</a>, <a class="el" href="classPriorityQueue.html#a3be4d8e8f7044a5d36db3a8e515725e3">PriorityQueue::remove()</a> and <a class="el" href="classPriorityQueue.html#af2ee860e506c36186cf2be55743b7ab1">PriorityQueue::peek()</a>, while <code>sort_orig</code> demonstrates <a class="el" href="classPriorityQueue.html#a2bfa2afbb049da2769568bf8674c383e">PriorityQueue::sort()</a>, an implementation of heap sort, as per the <a href="#problem-statements">problem statements</a> given below.</p>
-<p>If you want to use priority_queue as a library, skip to <a href="#usage">Usage</a>.</p>
+<p>Run <code>make kruskal</code> to generate the binary <code>./bin/kruskal</code>.</p>
+<p><code>kruskal</code> implements a solution to the problem given below using Kruskal's Minimum Spanning Tree algorithm.</p>
 <h1><a class="anchor" id="autotoc_md2"></a>
-Problem Statements</h1>
-<p>The following problem statements have been used to demonstrate this project's implementation of priority queue and heap sort.</p>
+Problem Statement</h1>
+<p>The following problem statement has been used to demonstrate this project's implementation of Kruskal's MST algorithm.</p>
 <h2><a class="anchor" id="autotoc_md3"></a>
-Priority Queue</h2>
+Minimum Spanning Tree</h2>
 <h3><a class="anchor" id="autotoc_md4"></a>
 Statement</h3>
-<p>You are given an array of integers and a series of queries. Implement a priority queue data structure using a binary heap to efficiently manage these integers based on their values. The priority queue should support the following operations:</p>
-<ol type="1">
-<li><b>Initialization</b>: Initialize the priority queue with an array of integers.</li>
-<li><b>Insertion</b> (Enqueue): Add an integer priority to the priority queue.</li>
-<li><b>Removal</b> (Dequeue): Remove and return the priority with the highest value (i.e., the maximum priority) from the priority queue.</li>
-<li><b>Peek</b>: Return the priority with the highest value without removing it from the priority queue.</li>
-</ol>
+<p>Find the minimum spanning tree or forest of the given graph.</p>
 <h3><a class="anchor" id="autotoc_md5"></a>
 Input Format</h3>
-<p>The first line of input contains two space-separated integers <b>n</b> and <b>q</b>, where <b>n</b> represents the number of initial elements in the priority queue, and <b>q</b> represents the number of queries.</p>
-<p>The next (second) line contains n space-separated integers <b>A[i]</b>, the initial elements in the priority queue.</p>
-<p>The following <b>q</b> lines each contain a query. A query can be of the following forms:</p>
-<ul>
-<li><b>i x</b>: insert the integer <b>x</b> into the priority queue.</li>
-<li><b>r</b>: remove the top-most element from the priority queue.</li>
-<li><b>p</b>: peek (or print) the top-most element in the priority queue.</li>
-</ul>
+<p>The first line of input contains two space-separated integers <b>n</b> and <b>m</b>, where <b>n</b> represents the number of nodes in the graph, or rather, the index of the maximum numbered node, and <b>m</b> represents the number of edges.</p>
+<p>The following <b>m</b> lines each contain three space-separated integers <b>u_i, v_i, w_i</b> representing the i-th edge of the undirected graph.</p>
 <h3><a class="anchor" id="autotoc_md6"></a>
 Output Format</h3>
-<p>For every peek/print query, print a single integer on a new line: the top-most element of the priority queue.</p>
+<p>On the first line, output a single integer <b>k</b> representing the number of edges in the minimum spanning tree / forest. Then, output <b>k</b> lines, with each line containing three space-separated integers <b>u_i, v_i, w_i</b> representing the i-th edge of the minimum spanning forest. Finally, output a single integer <b>W</b> representing the total weight of the minimum spanning forest.</p>
 <h3><a class="anchor" id="autotoc_md7"></a>
 Constraints</h3>
-<p>0 ≤ <b>n, q</b> ≤ 10⁷</p>
-<p>-10⁹ ≤ <b>A[i], x</b> ≤ 10⁹</p>
-<h2><a class="anchor" id="autotoc_md8"></a>
-Sort</h2>
-<h3><a class="anchor" id="autotoc_md9"></a>
-Statement</h3>
-<p>You are given an array of integers. Sort them in place.</p>
-<h3><a class="anchor" id="autotoc_md10"></a>
-Input Format</h3>
-<p>The first line of input contains one integer <b>n</b>, the number of elements in the array.</p>
-<p>The second line of input contains n space-separated integers <b>A[i]</b>, the elements of the array.</p>
-<h3><a class="anchor" id="autotoc_md11"></a>
-Output Format</h3>
-<p>On a single line, print <b>n</b> space-separated integers: the elements of the given array, in sorted order.</p>
-<h3><a class="anchor" id="autotoc_md12"></a>
-Constraints</h3>
-<p>0 ≤ <b>n</b> ≤ 10⁷</p>
-<p>-10⁹ ≤ <b>A[i]</b> ≤ 10⁹</p>
-<h1><a class="anchor" id="autotoc_md13"></a>
-Usage</h1>
-<p>The <a class="el" href="classPriorityQueue.html">PriorityQueue</a> class style is in alignment with C++'s STL containers.</p>
-<div class="fragment"><div class="line">#include &lt;priority_queue.hpp&gt;</div>
-<div class="line"> </div>
-<div class="line">int main()</div>
-<div class="line">{</div>
-<div class="line">    // empty initialization</div>
-<div class="line">    PriorityQueue&lt;int&gt; pq0;</div>
-<div class="line"> </div>
-<div class="line">    // C-style initialization (for arrays)</div>
-<div class="line">    int a[] = {1, 2, 3, 1, 4, 7};</div>
-<div class="line">    PriorityQueue&lt;int&gt; pq1(a, sizeof(a) / sizeof(a[0]));</div>
-<div class="line"> </div>
-<div class="line">    // C++-style initialization (for STL containers)</div>
-<div class="line">    std::vector&lt;int&gt; v = {5, 1, 4, 1, 7, 7, 9};</div>
-<div class="line">    PriorityQueue&lt;int&gt; pq2(v.begin(), v.end());</div>
-<div class="line"> </div>
-<div class="line">    pq2.insert(-5);     // insert -5 into the pq</div>
-<div class="line"> </div>
-<div class="line">    int x = pq.peek();  // get the top-most element</div>
-<div class="line"> </div>
-<div class="line">    pq.remove();        // remove the top-most element</div>
-<div class="line"> </div>
-<div class="line">    int b[] = {6, 4, 3, 2, 14, 18};</div>
-<div class="line"> </div>
-<div class="line">    sort(b, sizeof(b) / sizeof(b[0]));</div>
-<div class="line"> </div>
-<div class="line">    /* The array b is now sorted. */</div>
-<div class="line">}</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md14"></a>
-Performance</h1>
-<h2><a class="anchor" id="autotoc_md15"></a>
-Correctness</h2>
-<p>The implementations of priority queue and sort have been stress tested against their STL counterparts. Run <code>scripts/stress_pq.py</code> and <code>scripts/stress_sort.py</code> to verify the same.</p>
-<h2><a class="anchor" id="autotoc_md16"></a>
-Speed</h2>
-<p>These implementations of priority queue and sort significantly outperform STL, as can be seen from the below charts:</p>
-<p><img src="pq_time.png" alt="" class="inline" title="pq-time-all"/></p>
-<p><img src="sort_time.png" alt="" class="inline" title="sort-time-all"/></p>
-<h2><a class="anchor" id="autotoc_md17"></a>
-Memory</h2>
-<p>The memory used is on par with STL, as can be seen from the below charts:</p>
-<p><img src="pq_mem.png" alt="" class="inline" title="pq-mem-all"/></p>
-<p><img src="pq_mem.png" alt="" class="inline" title="sort-mem-all"/></p>
-<p>Note: these tests/benchmark use a custom input/output library for better performance. </p>
+<p>0 ≤ <b>n, m</b> ≤ 10⁷</p>
+<p>0 ≤ <b>u_i, v_i</b> ≤ <b>n</b></p>
+<p>-10⁹ ≤ <b>w_i</b> ≤ 10⁹</p>
+<h3><a class="anchor" id="autotoc_md8"></a>
+Sample Input</h3>
+<div class="fragment"><div class="line">4 5</div>
+<div class="line">1 2 10</div>
+<div class="line">2 3 15</div>
+<div class="line">1 3 5</div>
+<div class="line">4 2 2</div>
+<div class="line">4 3 40</div>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md9"></a>
+Sample Output</h3>
+<div class="fragment"><div class="line">3</div>
+<div class="line">4 2 2</div>
+<div class="line">1 3 5</div>
+<div class="line">1 2 10</div>
+<div class="line">17</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md10"></a>
+Notes</h1>
+<p>This implementation uses a custom input/output library for better performance. </p>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 <!-- start footer part -->

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['priorityqueue_23',['PriorityQueue',['../classPriorityQueue.html',1,'']]]
+  ['output_32',['Output',['../classOutput.html',1,'']]]
 ];
